@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: wp-ShowGithubFile
- * Description:       Show a file, preferrably source code file content in a WordPress blog post or page
+ * Description:       Show a file, preferably source code file content in a WordPress blog post or page
  * Version:           1.0.0
  * Author:            NinethSense
  * Author URI:        https://blog.ninethsense.com/
