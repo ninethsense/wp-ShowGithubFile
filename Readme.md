@@ -11,11 +11,17 @@
  ### Description:
  This is a very minimal show file contents WordPress plugin. PHP's builting syntax highlight feature is used to highlight any source code. 
  
- ### Disclaimer
- Use this at your risk. This project has not been tested thoroughly, and has very minimal features.
+ ### Installation
+1. Download the file *wp-ShowGithubFile.php* and upload to your */wp-content/plugins* folder
+2. Login to your Wordpress admin (/wp-admin) and go to *Plugins* section
+3. "Activate" the plugin
  
  ### Usage:
  **[GitHub file="GitHub raw file path" [style='css style']]**
  
  Example: 
  **[GitHub file="https://raw.githubusercontent.com/ninethsense/code-share/master/PortPing/PortPing.php"]**
+ **[GitHub file="https://raw.githubusercontent.com/ninethsense/code-share/master/PortPing/PortPing.php" style='max-height:400px']**
+
+### Disclaimer
+ Use this at your risk. This project has not been tested thoroughly, and has very minimal features.
