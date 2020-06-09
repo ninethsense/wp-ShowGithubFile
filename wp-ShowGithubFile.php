@@ -11,9 +11,9 @@
 
     add_shortcode( "GitHub", "ShowGitHub" );
     function ShowGitHub($atts) {
-        if (!isset($atts["file"]) ||  strpos(strtolower($atts["file"]), "github" ) == 0 ) {
+        if (!isset($atts["file"]) && !strpos(strtolower($atts["file"]), "https://raw.githubusercontent.com/" )) {
             // Also, I want only files from GitHub. Modify this to show file from any URL
-            return "[Invalid file]";
+            return "[Invalid GitHub Raw file]";
         }
         
         $fh = @get_headers($atts["file"]);
