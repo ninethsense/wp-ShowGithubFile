@@ -22,9 +22,8 @@
             return "[Invalid file]";
         }
         
-        $fcontents = file_get_contents($atts["file"]);
+        $fcontents = file_get_contents(trim($atts["file"]));
         $notphp = false;
-
         
         if (strpos($fcontents, "?php") == false) {
             $fcontents = "<?php ".$fcontents;
@@ -33,25 +32,28 @@
         
         // Make use of PHP syntax highlighing. Something is better than nothing.
         $fcontents = highlight_string($fcontents, TRUE);
+        
         if ($notphp) {
-            $fcontents =  str_replace("&lt;?php", "",$fcontents);
+            $fcontents = str_replace("&lt;?php&nbsp;", "",$fcontents);
             $notphp = false;
         }
-        
+
+        $fcontents = str_replace(["<code>", "</code>"], "",$fcontents);
         
         $fcontents = explode("<br />",$fcontents);
+        
         $style = (isset($atts["style"])) ?$atts["style"]:"";
-        $ret = "<div style='background-color:#dcd7ca;width:100%;overflow:auto;white-space:nowrap;border:solid 1px #aaa;font-size:10pt;$style;'>";
+        $ret = "<div style='font-family:monospace;background-color:#dcd7ca;width:100%;overflow:auto;white-space:nowrap;border:solid 1px #aaa;font-size:10pt;$style'>";
         for ($i=0;$i<sizeof($fcontents);$i++) {
-            //$line = str_replace("\t","&nbsp;&nbsp;&nbsp;&nbsp;",$fcontents[$i]);
             $line = $fcontents[$i];
-            $ret .= "<span style='font-size:10pt;display:block;width:40px;background-color:#aaa;float:left'>" . str_pad($i+1, 3,'0',STR_PAD_LEFT) ." </span><span style='width:100%;inline-block'>&nbsp;" . $line . "</span><br />";
-            //$ret .= "<span style='display:block;width:40px;background-color:#aaa;float:left'>" . str_pad($i+1, 3,'0',STR_PAD_LEFT) ." </span><span style='display:inline-block;width:100%;background-color:#ddd;'>" . $line . "&nbsp;</span><br />";
+            $ret .= "<span style='font-size:10pt;display:block;width:40px;background-color:#aaa;float:left'>" . 
+                str_pad($i+1, 3,'0',STR_PAD_LEFT) ." </span><span style='margin-left:10px;width:100%;inline-block'>" . $line . "</span><br />";
         }
         $ret .= "</div>";
        
-        
+        file_put_contents("D:\\test.txt", $ret);
         return $ret;
+
         
     }
 ?>
